@@ -19,6 +19,17 @@ export interface Report {
   network_iocs: string[]
   ioc_counts: Record<string, number>
   config?: MalwareConfig
+  ioc_context?: Record<string, IocContext>
+}
+
+export interface IocContext {
+  classification: string
+  noise?: boolean
+  riot?: boolean
+  name?: string
+  tags?: string[]
+  asn?: string
+  last_seen?: string
 }
 
 export interface MalwareConfig {
@@ -41,7 +52,10 @@ export interface Manifest {
   verdicts: Record<string, number>
 }
 
-export interface SharedIoc { bucket: string; value: string; reports: string[]; count: number }
+export interface SharedIoc {
+  bucket: string; value: string; reports: string[]; count: number
+  classification?: string; tags?: string[]
+}
 export interface ImphashCluster { imphash: string; reports: string[]; count: number }
 export interface TlshCluster { reports: string[]; count: number; max_distance: number }
 export interface FamilyGroup { family: string; reports: string[]; count: number }

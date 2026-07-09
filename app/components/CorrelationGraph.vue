@@ -8,7 +8,7 @@ const H = 520
 
 type Kind = 'report' | 'ioc' | 'imphash' | 'family' | 'config' | 'tlsh'
 interface GNode {
-  id: string; label: string; full: string; kind: Kind; to?: string
+  id: string; label: string; full: string; kind: Kind; to?: string; cls?: string
   x: number; y: number; vx: number; vy: number
 }
 interface GEdge { a: number; b: number }
@@ -50,7 +50,8 @@ const graph = computed(() => {
   }
   for (const s of props.intel.shared_iocs || []) {
     const id = `ioc:${s.bucket}:${s.value}`
-    add(id, s.value.length > 18 ? s.value.slice(0, 18) + '\u2026' : s.value, s.value, 'ioc')
+    const idx = add(id, s.value.length > 18 ? s.value.slice(0, 18) + '\u2026' : s.value, s.value, 'ioc')
+    if (s.classification) nodes[idx].cls = s.classification
     for (const rid of s.reports) link(id, `r:${rid}`)
   }
   for (const c of props.intel.imphash_clusters || []) {
@@ -125,7 +126,9 @@ const graph = computed(() => {
 
 const hover = ref<number | null>(null)
 const nodeColor = (n: GNode) =>
-  n.kind === 'report' ? (VERDICT_NODE[verdictOf(n.id)] || '#71717a') : KIND_COLOR[n.kind]
+  n.kind === 'report' ? (VERDICT_NODE[verdictOf(n.id)] || '#71717a')
+    : n.kind === 'ioc' && n.cls === 'benign' ? '#71717a'
+    : KIND_COLOR[n.kind]
 const isDim = (i: number) => {
   if (hover.value === null || hover.value === i) return false
   return !graph.value.edges.some(e =>

@@ -43,6 +43,14 @@ const configGroups = computed(() => {
     { label: 'Version', icon: 'i-lucide-tag', values: c.version },
   ].filter(g => (g.values || []).length)
 })
+
+function ctxBadgeColor(cls?: string) {
+  return cls === 'malicious' ? 'error' : cls === 'benign' ? 'success' : 'neutral'
+}
+function iocRowClass(ioc: string) {
+  const c = report.value?.ioc_context?.[ioc]?.classification
+  return c === 'benign' ? 'border-success/25 bg-success/5' : 'border-error/25 bg-error/5'
+}
 </script>
 
 <template>
@@ -141,13 +149,21 @@ const configGroups = computed(() => {
     <section v-if="(report.network_iocs || []).length">
       <h2 class="mb-2 flex items-center gap-2 text-sm font-semibold text-muted">
         <UIcon name="i-lucide-network" class="size-4" /> Network indicators
-        <span class="text-[11px] font-normal text-dimmed">(defanged)</span>
+        <span class="text-[11px] font-normal text-dimmed">(defanged<template v-if="report.ioc_context"> · GreyNoise context</template>)</span>
       </h2>
       <ul class="space-y-1">
         <li v-for="ioc in report.network_iocs" :key="ioc"
-          class="flex items-center gap-2 rounded-md border border-error/25 bg-error/5 px-3 py-1.5 font-mono text-xs">
-          <UIcon name="i-lucide-globe" class="size-3.5 shrink-0 text-error/70" />
+          class="flex flex-wrap items-center gap-2 rounded-md border px-3 py-1.5 font-mono text-xs"
+          :class="iocRowClass(ioc)">
+          <UIcon name="i-lucide-globe" class="size-3.5 shrink-0 opacity-70" />
           <span class="break-all">{{ ioc }}</span>
+          <template v-if="report.ioc_context?.[ioc]">
+            <UBadge :color="ctxBadgeColor(report.ioc_context[ioc].classification)" variant="subtle"
+              size="xs" class="font-sans">{{ report.ioc_context[ioc].classification }}</UBadge>
+            <span v-if="report.ioc_context[ioc].name" class="font-sans text-[10px] text-dimmed">{{ report.ioc_context[ioc].name }}</span>
+            <span v-for="tag in report.ioc_context[ioc].tags || []" :key="tag"
+              class="rounded bg-elevated/60 px-1.5 py-0.5 font-sans text-[10px] text-muted">{{ tag }}</span>
+          </template>
         </li>
       </ul>
     </section>

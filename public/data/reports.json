@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-09T20:10:18Z",
+  "generated": "2026-07-09T21:00:23Z",
   "count": 5,
   "reports": [
     {
@@ -35,10 +35,11 @@
       "report": "2026/e5f607182a3b-march.md",
       "network_iocs": [
         "hxxp://c2[.]agent-tesla[.]top/gate[.]php",
-        "185[.]220[.]101[.]45"
+        "185[.]220[.]101[.]45",
+        "45[.]83[.]13[.]4"
       ],
       "ioc_counts": {
-        "network": 2,
+        "network": 3,
         "hosts": 0,
         "files": 1,
         "registry": 1,
@@ -60,6 +61,31 @@
         "version": [
           "4.9.2"
         ]
+      },
+      "ioc_context": {
+        "185[.]220[.]101[.]45": {
+          "classification": "malicious",
+          "noise": true,
+          "riot": false,
+          "name": "Tor exit / AgentTesla CnC",
+          "tags": [
+            "Tor Exit Node",
+            "AgentTesla CnC"
+          ],
+          "asn": "AS208294",
+          "last_seen": "2026-07-08"
+        },
+        "45[.]83[.]13[.]4": {
+          "classification": "benign",
+          "noise": true,
+          "riot": true,
+          "name": "Censys",
+          "tags": [
+            "Censys Scanner"
+          ],
+          "asn": "AS398324",
+          "last_seen": "2026-07-09"
+        }
       }
     },
     {
@@ -96,10 +122,11 @@
       "report": "2026/a1b2c3d4e5f6-invoice.md",
       "network_iocs": [
         "hxxp://c2[.]agent-tesla[.]top/gate[.]php",
-        "185[.]220[.]101[.]45"
+        "185[.]220[.]101[.]45",
+        "45[.]83[.]13[.]4"
       ],
       "ioc_counts": {
-        "network": 2,
+        "network": 3,
         "hosts": 0,
         "files": 1,
         "registry": 1,
@@ -121,6 +148,31 @@
         "version": [
           "4.9.2"
         ]
+      },
+      "ioc_context": {
+        "185[.]220[.]101[.]45": {
+          "classification": "malicious",
+          "noise": true,
+          "riot": false,
+          "name": "Tor exit / AgentTesla CnC",
+          "tags": [
+            "Tor Exit Node",
+            "AgentTesla CnC"
+          ],
+          "asn": "AS208294",
+          "last_seen": "2026-07-08"
+        },
+        "45[.]83[.]13[.]4": {
+          "classification": "benign",
+          "noise": true,
+          "riot": true,
+          "name": "Censys",
+          "tags": [
+            "Censys Scanner"
+          ],
+          "asn": "AS398324",
+          "last_seen": "2026-07-09"
+        }
       }
     },
     {
@@ -154,10 +206,11 @@
       "tlp": "AMBER",
       "report": "2026/b2c3d4e5f607-order.md",
       "network_iocs": [
-        "hxxp://c2[.]agent-tesla[.]top/gate[.]php"
+        "hxxp://c2[.]agent-tesla[.]top/gate[.]php",
+        "45[.]83[.]13[.]4"
       ],
       "ioc_counts": {
-        "network": 1,
+        "network": 2,
         "hosts": 0,
         "files": 0,
         "registry": 1,
@@ -179,6 +232,19 @@
         "version": [
           "4.9.2"
         ]
+      },
+      "ioc_context": {
+        "45[.]83[.]13[.]4": {
+          "classification": "benign",
+          "noise": true,
+          "riot": true,
+          "name": "Censys",
+          "tags": [
+            "Censys Scanner"
+          ],
+          "asn": "AS398324",
+          "last_seen": "2026-07-09"
+        }
       }
     },
     {
@@ -239,6 +305,17 @@
         "version": [
           "4.1"
         ]
+      },
+      "ioc_context": {
+        "91[.]92[.]240[.]12": {
+          "classification": "unknown",
+          "noise": false,
+          "riot": false,
+          "name": "",
+          "tags": [],
+          "asn": "",
+          "last_seen": ""
+        }
       }
     },
     {

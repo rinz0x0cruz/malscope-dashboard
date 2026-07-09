@@ -83,7 +83,15 @@ const hasHeat = computed(() => Object.keys(intel.value.attack_heatmap || {}).len
               <td class="px-4 py-2">
                 <UBadge color="neutral" variant="soft" size="sm">{{ ioc.bucket }}</UBadge>
               </td>
-              <td class="break-all px-4 py-2 font-mono text-xs text-error/90">{{ ioc.value }}</td>
+              <td class="break-all px-4 py-2 font-mono text-xs text-error/90">
+                {{ ioc.value }}
+                <UBadge v-if="ioc.classification" class="ml-1 font-sans" size="xs" variant="subtle"
+                  :color="ioc.classification === 'malicious' ? 'error' : ioc.classification === 'benign' ? 'success' : 'neutral'">
+                  {{ ioc.classification }}
+                </UBadge>
+                <span v-for="tag in ioc.tags || []" :key="tag"
+                  class="ml-1 rounded bg-elevated/60 px-1 py-0.5 font-sans text-[10px] text-muted">{{ tag }}</span>
+              </td>
               <td class="px-4 py-2">
                 <div class="flex flex-wrap gap-1">
                   <NuxtLink v-for="rid in ioc.reports" :key="rid" :to="`/reports/${rid}`"

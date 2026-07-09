@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-09T20:10:18Z",
+  "generated": "2026-07-09T21:00:23Z",
   "reports": 5,
   "shared_iocs": [
     {
@@ -11,6 +11,20 @@
         "e5f607182a3b"
       ],
       "count": 3
+    },
+    {
+      "bucket": "network",
+      "value": "45[.]83[.]13[.]4",
+      "reports": [
+        "a1b2c3d4e5f6",
+        "b2c3d4e5f607",
+        "e5f607182a3b"
+      ],
+      "count": 3,
+      "classification": "benign",
+      "tags": [
+        "Censys Scanner"
+      ]
     },
     {
       "bucket": "network",
@@ -48,7 +62,12 @@
         "a1b2c3d4e5f6",
         "e5f607182a3b"
       ],
-      "count": 2
+      "count": 2,
+      "classification": "malicious",
+      "tags": [
+        "Tor Exit Node",
+        "AgentTesla CnC"
+      ]
     }
   ],
   "imphash_clusters": [
