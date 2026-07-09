@@ -55,7 +55,7 @@ const clusterCount = computed(() => (intel.value.imphash_clusters || []).length)
           <h2 class="text-sm font-semibold text-muted">ATT&amp;CK by tactic</h2>
           <UButton to="/intel" variant="link" size="xs" trailing-icon="i-lucide-arrow-right">Heatmap</UButton>
         </div>
-        <TacticDonut v-if="tacticProfile.length" :items="tacticProfile" />
+        <TacticRadar v-if="tacticProfile.length" :items="tacticProfile" />
         <p v-else class="text-sm text-dimmed">No techniques yet.</p>
       </section>
     </div>
