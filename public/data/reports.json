@@ -1,7 +1,67 @@
 {
-  "generated": "2026-07-09T12:00:00Z",
-  "count": 4,
+  "generated": "2026-07-09T20:10:18Z",
+  "count": 5,
   "reports": [
+    {
+      "id": "e5f607182a3b",
+      "sha256": "e5f607182a3b0718293a4b5c6d7e8f90112233445566778899aabbccddeeff05",
+      "filename": "invoice_march.exe",
+      "filetype": "pe",
+      "size": 187904,
+      "family": "AgentTesla",
+      "classification": "stealer",
+      "verdict": "malicious",
+      "severity": "high",
+      "first_seen": "2026-07-09T16:40:00Z",
+      "tags": [
+        "phishing",
+        "stealer",
+        "repacked"
+      ],
+      "techniques": [
+        "T1059.003",
+        "T1055",
+        "T1071",
+        "T1547"
+      ],
+      "capabilities": [
+        "c2/http",
+        "host-interaction/registry/create"
+      ],
+      "signatures": [
+        "ET MALWARE AgentTesla CnC Checkin"
+      ],
+      "tlp": "AMBER",
+      "report": "2026/e5f607182a3b-march.md",
+      "network_iocs": [
+        "hxxp://c2[.]agent-tesla[.]top/gate[.]php",
+        "185[.]220[.]101[.]45"
+      ],
+      "ioc_counts": {
+        "network": 2,
+        "hosts": 0,
+        "files": 1,
+        "registry": 1,
+        "mutexes": 1
+      },
+      "config": {
+        "c2": [
+          "hxxp://c2[.]agent-tesla[.]top/gate[.]php"
+        ],
+        "keys": [
+          "rc4:8F2A1B3C4D9E7F60"
+        ],
+        "campaign": [
+          "TESLA-0725"
+        ],
+        "mutex": [
+          "tesla-mtx-9F2A"
+        ],
+        "version": [
+          "4.9.2"
+        ]
+      }
+    },
     {
       "id": "a1b2c3d4e5f6",
       "sha256": "a1b2c3d4e5f60718293a4b5c6d7e8f90112233445566778899aabbccddeeff00",
@@ -13,21 +73,55 @@
       "verdict": "malicious",
       "severity": "high",
       "first_seen": "2026-07-08T09:12:00Z",
-      "tags": ["phishing", "stealer"],
-      "techniques": ["T1059.003", "T1055", "T1112", "T1547", "T1071"],
-      "capabilities": ["c2/http", "host-interaction/registry/create", "data-manipulation/encoding/base64"],
-      "signatures": ["ET MALWARE AgentTesla CnC Checkin"],
+      "tags": [
+        "phishing",
+        "stealer"
+      ],
+      "techniques": [
+        "T1059.003",
+        "T1055",
+        "T1112",
+        "T1547",
+        "T1071"
+      ],
+      "capabilities": [
+        "c2/http",
+        "host-interaction/registry/create",
+        "data-manipulation/encoding/base64"
+      ],
+      "signatures": [
+        "ET MALWARE AgentTesla CnC Checkin"
+      ],
       "tlp": "AMBER",
       "report": "2026/a1b2c3d4e5f6-invoice.md",
-      "network_iocs": ["hxxp://c2[.]agent-tesla[.]top/gate.php", "185[.]220[.]101[.]45"],
-      "config": {
-        "c2": ["hxxp://c2[.]agent-tesla[.]top/gate.php"],
-        "keys": ["rc4:8F2A1B3C4D9E7F60"],
-        "campaign": ["TESLA-0725"],
-        "mutex": ["tesla-mtx-9F2A"],
-        "version": ["4.9.2"]
+      "network_iocs": [
+        "hxxp://c2[.]agent-tesla[.]top/gate[.]php",
+        "185[.]220[.]101[.]45"
+      ],
+      "ioc_counts": {
+        "network": 2,
+        "hosts": 0,
+        "files": 1,
+        "registry": 1,
+        "mutexes": 1
       },
-      "ioc_counts": { "network": 2, "hosts": 0, "files": 3, "registry": 4, "mutexes": 1 }
+      "config": {
+        "c2": [
+          "hxxp://c2[.]agent-tesla[.]top/gate[.]php"
+        ],
+        "keys": [
+          "rc4:8F2A1B3C4D9E7F60"
+        ],
+        "campaign": [
+          "TESLA-0725"
+        ],
+        "mutex": [
+          "tesla-mtx-9F2A"
+        ],
+        "version": [
+          "4.9.2"
+        ]
+      }
     },
     {
       "id": "b2c3d4e5f607",
@@ -40,21 +134,52 @@
       "verdict": "malicious",
       "severity": "high",
       "first_seen": "2026-07-07T14:30:00Z",
-      "tags": ["phishing", "stealer"],
-      "techniques": ["T1059.003", "T1055", "T1071", "T1552"],
-      "capabilities": ["c2/http", "host-interaction/registry/create"],
-      "signatures": ["ET MALWARE AgentTesla CnC Checkin"],
+      "tags": [
+        "phishing",
+        "stealer"
+      ],
+      "techniques": [
+        "T1059.003",
+        "T1055",
+        "T1071",
+        "T1552"
+      ],
+      "capabilities": [
+        "c2/http",
+        "host-interaction/registry/create"
+      ],
+      "signatures": [
+        "ET MALWARE AgentTesla CnC Checkin"
+      ],
       "tlp": "AMBER",
       "report": "2026/b2c3d4e5f607-order.md",
-      "network_iocs": ["hxxp://c2[.]agent-tesla[.]top/gate.php"],
-      "config": {
-        "c2": ["hxxp://c2[.]agent-tesla[.]top/gate.php"],
-        "keys": ["rc4:8F2A1B3C4D9E7F60"],
-        "campaign": ["TESLA-0725"],
-        "mutex": ["tesla-mtx-9F2A"],
-        "version": ["4.9.2"]
+      "network_iocs": [
+        "hxxp://c2[.]agent-tesla[.]top/gate[.]php"
+      ],
+      "ioc_counts": {
+        "network": 1,
+        "hosts": 0,
+        "files": 0,
+        "registry": 1,
+        "mutexes": 1
       },
-      "ioc_counts": { "network": 1, "hosts": 0, "files": 2, "registry": 3, "mutexes": 1 }
+      "config": {
+        "c2": [
+          "hxxp://c2[.]agent-tesla[.]top/gate[.]php"
+        ],
+        "keys": [
+          "rc4:8F2A1B3C4D9E7F60"
+        ],
+        "campaign": [
+          "TESLA-0725"
+        ],
+        "mutex": [
+          "tesla-mtx-9F2A"
+        ],
+        "version": [
+          "4.9.2"
+        ]
+      }
     },
     {
       "id": "c3d4e5f60718",
@@ -67,21 +192,54 @@
       "verdict": "malicious",
       "severity": "critical",
       "first_seen": "2026-07-06T20:05:00Z",
-      "tags": ["loader", "injection"],
-      "techniques": ["T1055", "T1027", "T1497", "T1105", "T1071"],
-      "capabilities": ["host-interaction/process/inject", "anti-analysis/anti-vm/vm-detection"],
-      "signatures": ["ET MALWARE FormBook CnC"],
+      "tags": [
+        "loader",
+        "injection"
+      ],
+      "techniques": [
+        "T1055",
+        "T1027",
+        "T1497",
+        "T1105",
+        "T1071"
+      ],
+      "capabilities": [
+        "host-interaction/process/inject",
+        "anti-analysis/anti-vm/vm-detection"
+      ],
+      "signatures": [
+        "ET MALWARE FormBook CnC"
+      ],
       "tlp": "AMBER",
       "report": "2026/c3d4e5f60718-setup.md",
-      "network_iocs": ["hxxps://formbook-panel[.]xyz/fb/", "91[.]92[.]240[.]12"],
-      "config": {
-        "c2": ["hxxps://formbook-panel[.]xyz/fb/"],
-        "keys": ["xor:5A"],
-        "campaign": ["FB-DECEMBER"],
-        "mutex": ["fb-mtx-7c"],
-        "version": ["4.1"]
+      "network_iocs": [
+        "hxxps://formbook-panel[.]xyz/fb/",
+        "91[.]92[.]240[.]12"
+      ],
+      "ioc_counts": {
+        "network": 2,
+        "hosts": 0,
+        "files": 1,
+        "registry": 0,
+        "mutexes": 2
       },
-      "ioc_counts": { "network": 2, "hosts": 0, "files": 5, "registry": 2, "mutexes": 2 }
+      "config": {
+        "c2": [
+          "hxxps://formbook-panel[.]xyz/fb/"
+        ],
+        "keys": [
+          "xor:5A"
+        ],
+        "campaign": [
+          "FB-DECEMBER"
+        ],
+        "mutex": [
+          "fb-mtx-7c"
+        ],
+        "version": [
+          "4.1"
+        ]
+      }
     },
     {
       "id": "d4e5f6071829",
@@ -94,32 +252,113 @@
       "verdict": "suspicious",
       "severity": "medium",
       "first_seen": "2026-07-05T11:00:00Z",
-      "tags": ["maldoc", "macro"],
-      "techniques": ["T1059.003", "T1204", "T1027"],
-      "capabilities": ["executable/office-macro"],
+      "tags": [
+        "maldoc",
+        "macro"
+      ],
+      "techniques": [
+        "T1059.003",
+        "T1204",
+        "T1027"
+      ],
+      "capabilities": [
+        "executable/office-macro"
+      ],
       "signatures": [],
       "tlp": "GREEN",
       "report": "2026/d4e5f6071829-resume.md",
-      "network_iocs": ["hxxp://staging[.]doc-download[.]cc/p.php"],
-      "ioc_counts": { "network": 1, "hosts": 0, "files": 1, "registry": 0, "mutexes": 0 }
+      "network_iocs": [
+        "hxxp://staging[.]doc-download[.]cc/p[.]php"
+      ],
+      "ioc_counts": {
+        "network": 1,
+        "hosts": 0,
+        "files": 0,
+        "registry": 0,
+        "mutexes": 0
+      }
     }
   ],
   "techniques": {
-    "T1059.003": 3, "T1055": 3, "T1071": 3, "T1027": 2, "T1112": 1,
-    "T1547": 1, "T1552": 1, "T1497": 1, "T1105": 1, "T1204": 1
+    "T1059.003": 4,
+    "T1055": 4,
+    "T1071": 4,
+    "T1547": 2,
+    "T1112": 1,
+    "T1552": 1,
+    "T1027": 2,
+    "T1497": 1,
+    "T1105": 1,
+    "T1204": 1
   },
   "techniques_resolved": [
-    { "id": "T1055", "name": "Process Injection", "tactic": "Defense Evasion", "count": 3 },
-    { "id": "T1059.003", "name": "Command and Scripting Interpreter", "tactic": "Execution", "count": 3 },
-    { "id": "T1071", "name": "Application Layer Protocol", "tactic": "Command and Control", "count": 3 },
-    { "id": "T1027", "name": "Obfuscated Files or Information", "tactic": "Defense Evasion", "count": 2 },
-    { "id": "T1112", "name": "Modify Registry", "tactic": "Defense Evasion", "count": 1 },
-    { "id": "T1547", "name": "Boot or Logon Autostart Execution", "tactic": "Persistence", "count": 1 },
-    { "id": "T1552", "name": "Unsecured Credentials", "tactic": "Credential Access", "count": 1 },
-    { "id": "T1497", "name": "Virtualization/Sandbox Evasion", "tactic": "Defense Evasion", "count": 1 },
-    { "id": "T1105", "name": "Ingress Tool Transfer", "tactic": "Command and Control", "count": 1 },
-    { "id": "T1204", "name": "User Execution", "tactic": "Execution", "count": 1 }
+    {
+      "id": "T1055",
+      "name": "Process Injection",
+      "tactic": "Defense Evasion",
+      "count": 4
+    },
+    {
+      "id": "T1059.003",
+      "name": "Command and Scripting Interpreter",
+      "tactic": "Execution",
+      "count": 4
+    },
+    {
+      "id": "T1071",
+      "name": "Application Layer Protocol",
+      "tactic": "Command and Control",
+      "count": 4
+    },
+    {
+      "id": "T1027",
+      "name": "Obfuscated Files or Information",
+      "tactic": "Defense Evasion",
+      "count": 2
+    },
+    {
+      "id": "T1547",
+      "name": "Boot or Logon Autostart Execution",
+      "tactic": "Persistence",
+      "count": 2
+    },
+    {
+      "id": "T1105",
+      "name": "Ingress Tool Transfer",
+      "tactic": "Command and Control",
+      "count": 1
+    },
+    {
+      "id": "T1112",
+      "name": "Modify Registry",
+      "tactic": "Defense Evasion",
+      "count": 1
+    },
+    {
+      "id": "T1204",
+      "name": "User Execution",
+      "tactic": "Execution",
+      "count": 1
+    },
+    {
+      "id": "T1497",
+      "name": "Virtualization/Sandbox Evasion",
+      "tactic": "Defense Evasion",
+      "count": 1
+    },
+    {
+      "id": "T1552",
+      "name": "Unsecured Credentials",
+      "tactic": "Credential Access",
+      "count": 1
+    }
   ],
-  "families": { "AgentTesla": 2, "Formbook": 1 },
-  "verdicts": { "malicious": 3, "suspicious": 1 }
+  "families": {
+    "AgentTesla": 3,
+    "Formbook": 1
+  },
+  "verdicts": {
+    "malicious": 4,
+    "suspicious": 1
+  }
 }

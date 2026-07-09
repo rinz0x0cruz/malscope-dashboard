@@ -6,7 +6,7 @@ const props = defineProps<{ reports: Report[]; intel: Intel }>()
 const W = 760
 const H = 520
 
-type Kind = 'report' | 'ioc' | 'imphash' | 'family' | 'config'
+type Kind = 'report' | 'ioc' | 'imphash' | 'family' | 'config' | 'tlsh'
 interface GNode {
   id: string; label: string; full: string; kind: Kind; to?: string
   x: number; y: number; vx: number; vy: number
@@ -18,6 +18,7 @@ const KIND_COLOR: Record<Exclude<Kind, 'report'>, string> = {
   imphash: '#eab308',  // code similarity (gold)
   family: '#14b8a6',   // family (teal)
   config: '#f43f5e',   // shared malware config = same operator (crimson)
+  tlsh: '#38bdf8',     // fuzzy code similarity / variants (sky)
 }
 // Hexagon vertices (r=8, pointy-top) for config / operator nodes.
 const HEX = '0,-8 6.93,-4 6.93,4 0,8 -6.93,4 -6.93,-4'
@@ -71,6 +72,12 @@ const graph = computed(() => {
         `${c.field}: ${c.value}`, 'config')
     for (const rid of c.reports) link(id, `r:${rid}`)
   }
+  // Fuzzy (TLSH) similarity: binds recompiled variants that share no imphash.
+  ;(props.intel.tlsh_clusters || []).forEach((tc, i) => {
+    const id = `tlsh:${i}`
+    add(id, `\u2248 dist ${tc.max_distance}`, `fuzzy TLSH cluster (max distance ${tc.max_distance})`, 'tlsh')
+    for (const rid of tc.reports) link(id, `r:${rid}`)
+  })
 
   const N = nodes.length
   const CX = W / 2, CY = H / 2
@@ -151,6 +158,8 @@ const edgeDim = (e: GEdge) =>
         :fill="nodeColor(n)" stroke="#0a0a0a" stroke-width="1.5" />
       <polygon v-else-if="n.kind === 'config'" :points="HEX"
         :fill="nodeColor(n)" stroke="#0a0a0a" stroke-width="1.5" />
+      <circle v-else-if="n.kind === 'tlsh'" r="8" :fill="nodeColor(n)" fill-opacity="0.25"
+        :stroke="nodeColor(n)" stroke-width="1.5" stroke-dasharray="3 2" />
       <template v-else>
         <circle r="12" fill="none" :stroke="nodeColor(n)" stroke-opacity="0.4" />
         <circle r="8.5" :fill="nodeColor(n)" stroke="#0a0a0a" stroke-width="1.5" />

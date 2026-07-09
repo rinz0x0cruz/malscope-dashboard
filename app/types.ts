@@ -43,6 +43,7 @@ export interface Manifest {
 
 export interface SharedIoc { bucket: string; value: string; reports: string[]; count: number }
 export interface ImphashCluster { imphash: string; reports: string[]; count: number }
+export interface TlshCluster { reports: string[]; count: number; max_distance: number }
 export interface FamilyGroup { family: string; reports: string[]; count: number }
 export interface ConfigLink { field: string; value: string; reports: string[]; count: number }
 export interface OperatorSignal { field: string; value: string }
@@ -54,6 +55,7 @@ export interface Intel {
   reports: number
   shared_iocs: SharedIoc[]
   imphash_clusters: ImphashCluster[]
+  tlsh_clusters: TlshCluster[]
   families: FamilyGroup[]
   config_links: ConfigLink[]
   operator_clusters: OperatorCluster[]
@@ -66,7 +68,7 @@ export const EMPTY_MANIFEST: Manifest = {
   techniques_resolved: [], families: {}, verdicts: {},
 }
 export const EMPTY_INTEL: Intel = {
-  generated: '', reports: 0, shared_iocs: [], imphash_clusters: [],
+  generated: '', reports: 0, shared_iocs: [], imphash_clusters: [], tlsh_clusters: [],
   families: [], config_links: [], operator_clusters: [], attack_heatmap: {}, technique_totals: [],
 }
 

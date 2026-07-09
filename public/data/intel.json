@@ -1,81 +1,316 @@
 {
-  "generated": "2026-07-09T12:00:00Z",
-  "reports": 4,
+  "generated": "2026-07-09T20:10:18Z",
+  "reports": 5,
   "shared_iocs": [
     {
+      "bucket": "mutexes",
+      "value": "tesla-mtx-9F2A",
+      "reports": [
+        "a1b2c3d4e5f6",
+        "b2c3d4e5f607",
+        "e5f607182a3b"
+      ],
+      "count": 3
+    },
+    {
       "bucket": "network",
-      "value": "hxxp://c2[.]agent-tesla[.]top/gate.php",
-      "reports": ["a1b2c3d4e5f6", "b2c3d4e5f607"],
+      "value": "hxxp://c2[.]agent-tesla[.]top/gate[.]php",
+      "reports": [
+        "a1b2c3d4e5f6",
+        "b2c3d4e5f607",
+        "e5f607182a3b"
+      ],
+      "count": 3
+    },
+    {
+      "bucket": "registry",
+      "value": "\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\\Skype",
+      "reports": [
+        "a1b2c3d4e5f6",
+        "b2c3d4e5f607",
+        "e5f607182a3b"
+      ],
+      "count": 3
+    },
+    {
+      "bucket": "files",
+      "value": "%AppData%\\Roaming\\Skype\\skype.exe",
+      "reports": [
+        "a1b2c3d4e5f6",
+        "e5f607182a3b"
+      ],
+      "count": 2
+    },
+    {
+      "bucket": "network",
+      "value": "185[.]220[.]101[.]45",
+      "reports": [
+        "a1b2c3d4e5f6",
+        "e5f607182a3b"
+      ],
       "count": 2
     }
   ],
   "imphash_clusters": [
     {
       "imphash": "8f4e2b1c9a7d6e3f0b5a4c8d2e1f7a90",
-      "reports": ["a1b2c3d4e5f6", "b2c3d4e5f607"],
-      "count": 2
-    }
-  ],
-  "families": [
-    { "family": "AgentTesla", "reports": ["a1b2c3d4e5f6", "b2c3d4e5f607"], "count": 2 },
-    { "family": "Formbook", "reports": ["c3d4e5f60718"], "count": 1 }
-  ],
-  "config_links": [
-    { "field": "c2", "value": "hxxp://c2[.]agent-tesla[.]top/gate.php", "reports": ["a1b2c3d4e5f6", "b2c3d4e5f607"], "count": 2 },
-    { "field": "campaign", "value": "TESLA-0725", "reports": ["a1b2c3d4e5f6", "b2c3d4e5f607"], "count": 2 },
-    { "field": "keys", "value": "rc4:8F2A1B3C4D9E7F60", "reports": ["a1b2c3d4e5f6", "b2c3d4e5f607"], "count": 2 },
-    { "field": "mutex", "value": "tesla-mtx-9F2A", "reports": ["a1b2c3d4e5f6", "b2c3d4e5f607"], "count": 2 },
-    { "field": "version", "value": "4.9.2", "reports": ["a1b2c3d4e5f6", "b2c3d4e5f607"], "count": 2 }
-  ],
-  "operator_clusters": [
-    {
-      "reports": ["a1b2c3d4e5f6", "b2c3d4e5f607"],
-      "signals": [
-        { "field": "c2", "value": "hxxp://c2[.]agent-tesla[.]top/gate.php" },
-        { "field": "campaign", "value": "TESLA-0725" },
-        { "field": "keys", "value": "rc4:8F2A1B3C4D9E7F60" },
-        { "field": "mutex", "value": "tesla-mtx-9F2A" },
-        { "field": "version", "value": "4.9.2" }
+      "reports": [
+        "a1b2c3d4e5f6",
+        "b2c3d4e5f607"
       ],
       "count": 2
     }
   ],
+  "tlsh_clusters": [
+    {
+      "reports": [
+        "a1b2c3d4e5f6",
+        "b2c3d4e5f607",
+        "e5f607182a3b"
+      ],
+      "count": 3,
+      "max_distance": 11
+    }
+  ],
+  "families": [
+    {
+      "family": "AgentTesla",
+      "reports": [
+        "a1b2c3d4e5f6",
+        "b2c3d4e5f607",
+        "e5f607182a3b"
+      ],
+      "count": 3
+    },
+    {
+      "family": "Formbook",
+      "reports": [
+        "c3d4e5f60718"
+      ],
+      "count": 1
+    }
+  ],
+  "config_links": [
+    {
+      "field": "c2",
+      "value": "hxxp://c2[.]agent-tesla[.]top/gate[.]php",
+      "reports": [
+        "a1b2c3d4e5f6",
+        "b2c3d4e5f607",
+        "e5f607182a3b"
+      ],
+      "count": 3
+    },
+    {
+      "field": "campaign",
+      "value": "TESLA-0725",
+      "reports": [
+        "a1b2c3d4e5f6",
+        "b2c3d4e5f607",
+        "e5f607182a3b"
+      ],
+      "count": 3
+    },
+    {
+      "field": "keys",
+      "value": "rc4:8F2A1B3C4D9E7F60",
+      "reports": [
+        "a1b2c3d4e5f6",
+        "b2c3d4e5f607",
+        "e5f607182a3b"
+      ],
+      "count": 3
+    },
+    {
+      "field": "mutex",
+      "value": "tesla-mtx-9F2A",
+      "reports": [
+        "a1b2c3d4e5f6",
+        "b2c3d4e5f607",
+        "e5f607182a3b"
+      ],
+      "count": 3
+    },
+    {
+      "field": "version",
+      "value": "4.9.2",
+      "reports": [
+        "a1b2c3d4e5f6",
+        "b2c3d4e5f607",
+        "e5f607182a3b"
+      ],
+      "count": 3
+    }
+  ],
+  "operator_clusters": [
+    {
+      "reports": [
+        "a1b2c3d4e5f6",
+        "b2c3d4e5f607",
+        "e5f607182a3b"
+      ],
+      "signals": [
+        {
+          "field": "c2",
+          "value": "hxxp://c2[.]agent-tesla[.]top/gate[.]php"
+        },
+        {
+          "field": "campaign",
+          "value": "TESLA-0725"
+        },
+        {
+          "field": "keys",
+          "value": "rc4:8F2A1B3C4D9E7F60"
+        },
+        {
+          "field": "mutex",
+          "value": "tesla-mtx-9F2A"
+        },
+        {
+          "field": "version",
+          "value": "4.9.2"
+        }
+      ],
+      "count": 3
+    }
+  ],
   "attack_heatmap": {
     "Defense Evasion": {
-      "count": 6,
+      "count": 8,
       "techniques": [
-        { "id": "T1055", "name": "Process Injection", "count": 3 },
-        { "id": "T1027", "name": "Obfuscated Files or Information", "count": 2 },
-        { "id": "T1112", "name": "Modify Registry", "count": 1 }
+        {
+          "id": "T1055",
+          "name": "Process Injection",
+          "count": 4
+        },
+        {
+          "id": "T1027",
+          "name": "Obfuscated Files or Information",
+          "count": 2
+        },
+        {
+          "id": "T1112",
+          "name": "Modify Registry",
+          "count": 1
+        },
+        {
+          "id": "T1497",
+          "name": "Virtualization/Sandbox Evasion",
+          "count": 1
+        }
       ]
     },
     "Execution": {
-      "count": 4,
+      "count": 5,
       "techniques": [
-        { "id": "T1059.003", "name": "Command and Scripting Interpreter", "count": 3 },
-        { "id": "T1204", "name": "User Execution", "count": 1 }
+        {
+          "id": "T1059.003",
+          "name": "Command and Scripting Interpreter",
+          "count": 4
+        },
+        {
+          "id": "T1204",
+          "name": "User Execution",
+          "count": 1
+        }
       ]
     },
     "Command and Control": {
-      "count": 4,
+      "count": 5,
       "techniques": [
-        { "id": "T1071", "name": "Application Layer Protocol", "count": 3 },
-        { "id": "T1105", "name": "Ingress Tool Transfer", "count": 1 }
+        {
+          "id": "T1071",
+          "name": "Application Layer Protocol",
+          "count": 4
+        },
+        {
+          "id": "T1105",
+          "name": "Ingress Tool Transfer",
+          "count": 1
+        }
       ]
     },
     "Persistence": {
-      "count": 1,
-      "techniques": [{ "id": "T1547", "name": "Boot or Logon Autostart Execution", "count": 1 }]
+      "count": 2,
+      "techniques": [
+        {
+          "id": "T1547",
+          "name": "Boot or Logon Autostart Execution",
+          "count": 2
+        }
+      ]
     },
     "Credential Access": {
       "count": 1,
-      "techniques": [{ "id": "T1552", "name": "Unsecured Credentials", "count": 1 }]
+      "techniques": [
+        {
+          "id": "T1552",
+          "name": "Unsecured Credentials",
+          "count": 1
+        }
+      ]
     }
   },
   "technique_totals": [
-    { "id": "T1055", "name": "Process Injection", "tactic": "Defense Evasion", "count": 3 },
-    { "id": "T1059.003", "name": "Command and Scripting Interpreter", "tactic": "Execution", "count": 3 },
-    { "id": "T1071", "name": "Application Layer Protocol", "tactic": "Command and Control", "count": 3 },
-    { "id": "T1027", "name": "Obfuscated Files or Information", "tactic": "Defense Evasion", "count": 2 }
+    {
+      "id": "T1055",
+      "name": "Process Injection",
+      "tactic": "Defense Evasion",
+      "count": 4
+    },
+    {
+      "id": "T1059.003",
+      "name": "Command and Scripting Interpreter",
+      "tactic": "Execution",
+      "count": 4
+    },
+    {
+      "id": "T1071",
+      "name": "Application Layer Protocol",
+      "tactic": "Command and Control",
+      "count": 4
+    },
+    {
+      "id": "T1027",
+      "name": "Obfuscated Files or Information",
+      "tactic": "Defense Evasion",
+      "count": 2
+    },
+    {
+      "id": "T1547",
+      "name": "Boot or Logon Autostart Execution",
+      "tactic": "Persistence",
+      "count": 2
+    },
+    {
+      "id": "T1105",
+      "name": "Ingress Tool Transfer",
+      "tactic": "Command and Control",
+      "count": 1
+    },
+    {
+      "id": "T1112",
+      "name": "Modify Registry",
+      "tactic": "Defense Evasion",
+      "count": 1
+    },
+    {
+      "id": "T1204",
+      "name": "User Execution",
+      "tactic": "Execution",
+      "count": 1
+    },
+    {
+      "id": "T1497",
+      "name": "Virtualization/Sandbox Evasion",
+      "tactic": "Defense Evasion",
+      "count": 1
+    },
+    {
+      "id": "T1552",
+      "name": "Unsecured Credentials",
+      "tactic": "Credential Access",
+      "count": 1
+    }
   ]
 }

@@ -102,7 +102,7 @@ const hasHeat = computed(() => Object.keys(intel.value.attack_heatmap || {}).len
       </p>
     </section>
 
-    <div class="grid gap-6 lg:grid-cols-2">
+    <div class="grid gap-6 lg:grid-cols-3">
       <section>
         <h2 class="mb-3 flex items-center gap-2 text-sm font-semibold text-muted">
           <UIcon name="i-lucide-fingerprint" class="size-4" /> Imphash clusters
@@ -125,6 +125,33 @@ const hasHeat = computed(() => Object.keys(intel.value.attack_heatmap || {}).len
         </ul>
         <p v-else class="rounded-lg border border-dashed border-default/60 p-6 text-center text-sm text-dimmed">
           No clusters yet.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="mb-3 flex items-center gap-2 text-sm font-semibold text-muted">
+          <UIcon name="i-lucide-radar" class="size-4" /> Fuzzy (TLSH)
+          <span class="text-[11px] font-normal text-dimmed">(variants imphash misses)</span>
+        </h2>
+        <ul v-if="(intel.tlsh_clusters || []).length" class="space-y-2">
+          <li v-for="(c, i) in intel.tlsh_clusters" :key="i"
+            class="rounded-lg border border-default/60 bg-elevated/20 p-3">
+            <div class="flex items-center justify-between">
+              <span class="flex items-center gap-1.5 text-xs font-medium" style="color:#38bdf8">
+                <UIcon name="i-lucide-git-compare" class="size-3.5" /> {{ c.count }} similar
+              </span>
+              <span class="font-mono text-[11px] text-dimmed">max dist {{ c.max_distance }}</span>
+            </div>
+            <div class="mt-2 flex flex-wrap gap-1">
+              <NuxtLink v-for="rid in c.reports" :key="rid" :to="`/reports/${rid}`"
+                class="rounded bg-primary/10 px-1.5 py-0.5 font-mono text-[11px] text-primary hover:bg-primary/20">
+                {{ rid.slice(0, 8) }}
+              </NuxtLink>
+            </div>
+          </li>
+        </ul>
+        <p v-else class="rounded-lg border border-dashed border-default/60 p-6 text-center text-sm text-dimmed">
+          No fuzzy clusters yet.
         </p>
       </section>
 
