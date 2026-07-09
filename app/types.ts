@@ -70,6 +70,24 @@ export const EMPTY_INTEL: Intel = {
   families: [], config_links: [], operator_clusters: [], attack_heatmap: {}, technique_totals: [],
 }
 
+export interface Detection {
+  id: string
+  family: string
+  filename: string
+  verdict: string
+  severity: string
+  report: string
+  yara: string
+  sigma: string
+  sigma_count: number
+}
+export interface DetectionsManifest {
+  generated: string
+  count: number
+  detections: Detection[]
+}
+export const EMPTY_DETECTIONS: DetectionsManifest = { generated: '', count: 0, detections: [] }
+
 export const VERDICT_BADGE: Record<string, 'error' | 'warning' | 'success' | 'neutral'> = {
   malicious: 'error', suspicious: 'warning', benign: 'success', unknown: 'neutral',
 }

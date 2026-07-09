@@ -4,6 +4,7 @@ const links = [
   { label: 'Reports', to: '/reports', icon: 'i-lucide-file-text' },
   { label: 'Intel', to: '/intel', icon: 'i-lucide-share-2' },
   { label: 'Graph', to: '/graph', icon: 'i-lucide-waypoints' },
+  { label: 'Detections', to: '/detections', icon: 'i-lucide-shield-check' },
   { label: 'Search', to: '/search', icon: 'i-lucide-search' },
 ]
 const route = useRoute()
