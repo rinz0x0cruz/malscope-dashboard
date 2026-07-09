@@ -3,6 +3,7 @@ const links = [
   { label: 'Overview', to: '/', icon: 'i-lucide-layout-dashboard' },
   { label: 'Reports', to: '/reports', icon: 'i-lucide-file-text' },
   { label: 'Intel', to: '/intel', icon: 'i-lucide-share-2' },
+  { label: 'Search', to: '/search', icon: 'i-lucide-search' },
 ]
 const route = useRoute()
 </script>

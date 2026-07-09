@@ -42,6 +42,12 @@ const clusterCount = computed(() => (intel.value.imphash_clusters || []).length)
       </div>
     </div>
 
+    <section class="rounded-xl border border-default/60 bg-elevated/30 p-5">
+      <h2 class="mb-1 text-sm font-semibold text-muted">Activity timeline</h2>
+      <p class="mb-1 text-xs text-dimmed">Samples by first-seen date — dot colour = severity.</p>
+      <TimelineStrip :reports="m.reports || []" />
+    </section>
+
     <div class="grid gap-4 lg:grid-cols-2">
       <section class="rounded-xl border border-default/60 bg-elevated/30 p-5">
         <h2 class="mb-3 text-sm font-semibold text-muted">Top families</h2>
