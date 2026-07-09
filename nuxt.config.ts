@@ -11,6 +11,7 @@ export default defineNuxtConfig({
   colorMode: { preference: 'dark', fallback: 'dark' },
   app: {
     head: {
+      htmlAttrs: { class: 'dark' }, // bake dark into static HTML (no light flash, OS-independent)
       title: 'malscope — Malware Analysis Dashboard',
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
