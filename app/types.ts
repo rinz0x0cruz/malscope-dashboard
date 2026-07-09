@@ -62,3 +62,21 @@ export const VERDICT_BADGE: Record<string, 'error' | 'warning' | 'success' | 'ne
 export const SEVERITY_COLOR: Record<string, string> = {
   critical: '#dc2626', high: '#f97316', medium: '#f59e0b', low: '#38bdf8',
 }
+
+// ATT&CK tactic -> color (used by the Overview donut). Fallback zinc for unknown.
+export const TACTIC_COLOR: Record<string, string> = {
+  'Reconnaissance': '#a78bfa',
+  'Resource Development': '#8b5cf6',
+  'Initial Access': '#f472b6',
+  'Execution': '#22d3ee',
+  'Persistence': '#34d399',
+  'Privilege Escalation': '#f59e0b',
+  'Defense Evasion': '#ef4444',
+  'Credential Access': '#eab308',
+  'Discovery': '#38bdf8',
+  'Lateral Movement': '#fb923c',
+  'Collection': '#c084fc',
+  'Command and Control': '#60a5fa',
+  'Exfiltration': '#fb7185',
+  'Impact': '#f43f5e',
+}

@@ -12,7 +12,16 @@ const kpis = computed(() => [
 ])
 const topFamilies = computed(() =>
   Object.entries(m.value.families || {}).sort((a, b) => b[1] - a[1]).slice(0, 6))
-const topTech = computed(() => (m.value.techniques_resolved || []).slice(0, 8))
+const tacticProfile = computed(() => {
+  const acc: Record<string, number> = {}
+  for (const t of m.value.techniques_resolved || []) {
+    const key = t.tactic || 'Unknown'
+    acc[key] = (acc[key] || 0) + t.count
+  }
+  return Object.entries(acc)
+    .map(([tactic, count]) => ({ tactic, count }))
+    .sort((a, b) => b.count - a.count)
+})
 const recent = computed(() => (m.value.reports || []).slice(0, 6))
 const sharedCount = computed(() => (intel.value.shared_iocs || []).length)
 const clusterCount = computed(() => (intel.value.imphash_clusters || []).length)
@@ -43,11 +52,10 @@ const clusterCount = computed(() => (intel.value.imphash_clusters || []).length)
 
       <section class="rounded-xl border border-default/60 bg-elevated/30 p-5">
         <div class="mb-3 flex items-center justify-between">
-          <h2 class="text-sm font-semibold text-muted">Top ATT&amp;CK techniques</h2>
+          <h2 class="text-sm font-semibold text-muted">ATT&amp;CK by tactic</h2>
           <UButton to="/intel" variant="link" size="xs" trailing-icon="i-lucide-arrow-right">Heatmap</UButton>
         </div>
-        <BarList v-if="topTech.length"
-          :items="topTech.map(t => ({ label: `${t.id} · ${t.name}`, value: t.count }))" color="#22d3ee" />
+        <TacticDonut v-if="tacticProfile.length" :items="tacticProfile" />
         <p v-else class="text-sm text-dimmed">No techniques yet.</p>
       </section>
     </div>
