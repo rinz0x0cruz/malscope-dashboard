@@ -33,6 +33,14 @@ const results = computed<Hit[]>(() => {
     for (const c of r.capabilities || []) check('capability', c)
     for (const s of r.signatures || []) check('signature', s)
     for (const ioc of r.network_iocs || []) check('network', ioc)
+    const cfg = r.config
+    if (cfg) {
+      for (const v of cfg.campaign || []) check('campaign', v)
+      for (const v of cfg.keys || []) check('key', v)
+      for (const v of cfg.c2 || []) check('c2', v)
+      for (const v of cfg.mutex || []) check('mutex', v)
+      for (const v of cfg.version || []) check('version', v)
+    }
     if (matches.length) out.push({ report: r, matches })
   }
   return out
@@ -44,10 +52,10 @@ const clip = (s: string) => (s.length > 44 ? s.slice(0, 44) + '\u2026' : s)
 <template>
   <div class="space-y-5">
     <PageHeader eyebrow="malscope" title="Search"
-      subtitle="Where have I seen this? Paste a hash, domain, IP, ATT&amp;CK ID, capability, or signature — defanged or not." />
+      subtitle="Where have I seen this? Paste a hash, domain, IP, ATT&amp;CK ID, capability, signature, or config artefact (campaign / key / mutex) — defanged or not." />
 
     <UInput v-model="q" icon="i-lucide-search" size="lg" autofocus class="max-w-xl"
-      placeholder="c2.evil.top  ·  185.220.101.45  ·  T1055  ·  AgentTesla" />
+      placeholder="c2.evil.top  ·  185.220.101.45  ·  T1055  ·  TESLA-0725" />
 
     <template v-if="q.trim().length >= 2">
       <p class="text-sm text-dimmed">
