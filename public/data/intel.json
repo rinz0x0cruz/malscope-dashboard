@@ -1,0 +1,61 @@
+{
+  "generated": "2026-07-09T12:00:00Z",
+  "reports": 4,
+  "shared_iocs": [
+    {
+      "bucket": "network",
+      "value": "hxxp://c2[.]agent-tesla[.]top/gate.php",
+      "reports": ["a1b2c3d4e5f6", "b2c3d4e5f607"],
+      "count": 2
+    }
+  ],
+  "imphash_clusters": [
+    {
+      "imphash": "8f4e2b1c9a7d6e3f0b5a4c8d2e1f7a90",
+      "reports": ["a1b2c3d4e5f6", "b2c3d4e5f607"],
+      "count": 2
+    }
+  ],
+  "families": [
+    { "family": "AgentTesla", "reports": ["a1b2c3d4e5f6", "b2c3d4e5f607"], "count": 2 },
+    { "family": "Formbook", "reports": ["c3d4e5f60718"], "count": 1 }
+  ],
+  "attack_heatmap": {
+    "Defense Evasion": {
+      "count": 6,
+      "techniques": [
+        { "id": "T1055", "name": "Process Injection", "count": 3 },
+        { "id": "T1027", "name": "Obfuscated Files or Information", "count": 2 },
+        { "id": "T1112", "name": "Modify Registry", "count": 1 }
+      ]
+    },
+    "Execution": {
+      "count": 4,
+      "techniques": [
+        { "id": "T1059.003", "name": "Command and Scripting Interpreter", "count": 3 },
+        { "id": "T1204", "name": "User Execution", "count": 1 }
+      ]
+    },
+    "Command and Control": {
+      "count": 4,
+      "techniques": [
+        { "id": "T1071", "name": "Application Layer Protocol", "count": 3 },
+        { "id": "T1105", "name": "Ingress Tool Transfer", "count": 1 }
+      ]
+    },
+    "Persistence": {
+      "count": 1,
+      "techniques": [{ "id": "T1547", "name": "Boot or Logon Autostart Execution", "count": 1 }]
+    },
+    "Credential Access": {
+      "count": 1,
+      "techniques": [{ "id": "T1552", "name": "Unsecured Credentials", "count": 1 }]
+    }
+  },
+  "technique_totals": [
+    { "id": "T1055", "name": "Process Injection", "tactic": "Defense Evasion", "count": 3 },
+    { "id": "T1059.003", "name": "Command and Scripting Interpreter", "tactic": "Execution", "count": 3 },
+    { "id": "T1071", "name": "Application Layer Protocol", "tactic": "Command and Control", "count": 3 },
+    { "id": "T1027", "name": "Obfuscated Files or Information", "tactic": "Defense Evasion", "count": 2 }
+  ]
+}
