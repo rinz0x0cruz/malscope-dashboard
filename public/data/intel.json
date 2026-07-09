@@ -20,6 +20,26 @@
     { "family": "AgentTesla", "reports": ["a1b2c3d4e5f6", "b2c3d4e5f607"], "count": 2 },
     { "family": "Formbook", "reports": ["c3d4e5f60718"], "count": 1 }
   ],
+  "config_links": [
+    { "field": "c2", "value": "hxxp://c2[.]agent-tesla[.]top/gate.php", "reports": ["a1b2c3d4e5f6", "b2c3d4e5f607"], "count": 2 },
+    { "field": "campaign", "value": "TESLA-0725", "reports": ["a1b2c3d4e5f6", "b2c3d4e5f607"], "count": 2 },
+    { "field": "keys", "value": "rc4:8F2A1B3C4D9E7F60", "reports": ["a1b2c3d4e5f6", "b2c3d4e5f607"], "count": 2 },
+    { "field": "mutex", "value": "tesla-mtx-9F2A", "reports": ["a1b2c3d4e5f6", "b2c3d4e5f607"], "count": 2 },
+    { "field": "version", "value": "4.9.2", "reports": ["a1b2c3d4e5f6", "b2c3d4e5f607"], "count": 2 }
+  ],
+  "operator_clusters": [
+    {
+      "reports": ["a1b2c3d4e5f6", "b2c3d4e5f607"],
+      "signals": [
+        { "field": "c2", "value": "hxxp://c2[.]agent-tesla[.]top/gate.php" },
+        { "field": "campaign", "value": "TESLA-0725" },
+        { "field": "keys", "value": "rc4:8F2A1B3C4D9E7F60" },
+        { "field": "mutex", "value": "tesla-mtx-9F2A" },
+        { "field": "version", "value": "4.9.2" }
+      ],
+      "count": 2
+    }
+  ],
   "attack_heatmap": {
     "Defense Evasion": {
       "count": 6,

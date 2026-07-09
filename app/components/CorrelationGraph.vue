@@ -6,7 +6,7 @@ const props = defineProps<{ reports: Report[]; intel: Intel }>()
 const W = 760
 const H = 520
 
-type Kind = 'report' | 'ioc' | 'imphash' | 'family'
+type Kind = 'report' | 'ioc' | 'imphash' | 'family' | 'config'
 interface GNode {
   id: string; label: string; full: string; kind: Kind; to?: string
   x: number; y: number; vx: number; vy: number
@@ -17,7 +17,10 @@ const KIND_COLOR: Record<Exclude<Kind, 'report'>, string> = {
   ioc: '#f97316',      // shared infrastructure (orange)
   imphash: '#eab308',  // code similarity (gold)
   family: '#14b8a6',   // family (teal)
+  config: '#f43f5e',   // shared malware config = same operator (crimson)
 }
+// Hexagon vertices (r=8, pointy-top) for config / operator nodes.
+const HEX = '0,-8 6.93,-4 6.93,4 0,8 -6.93,4 -6.93,-4'
 const VERDICT_NODE: Record<string, string> = {
   malicious: '#a855f7', suspicious: '#ec4899', benign: '#10b981', unknown: '#71717a',
 }
@@ -58,6 +61,15 @@ const graph = computed(() => {
     const id = `fam:${f.family}`
     add(id, f.family, f.family, 'family')
     for (const rid of f.reports) link(id, `r:${rid}`)
+  }
+  // Operator/campaign signals: a shared campaign id or encryption key binds
+  // reports far more strongly than shared infra, so surface them as nodes.
+  for (const c of props.intel.config_links || []) {
+    if (c.field !== 'campaign' && c.field !== 'keys') continue
+    const id = `cfg:${c.field}:${c.value}`
+    add(id, c.value.length > 16 ? c.value.slice(0, 16) + '\u2026' : c.value,
+        `${c.field}: ${c.value}`, 'config')
+    for (const rid of c.reports) link(id, `r:${rid}`)
   }
 
   const N = nodes.length
@@ -136,6 +148,8 @@ const edgeDim = (e: GEdge) =>
       <rect v-else-if="n.kind === 'ioc'" x="-6" y="-6" width="12" height="12"
         transform="rotate(45)" :fill="nodeColor(n)" stroke="#0a0a0a" stroke-width="1.5" />
       <rect v-else-if="n.kind === 'imphash'" x="-6" y="-6" width="12" height="12" rx="1.5"
+        :fill="nodeColor(n)" stroke="#0a0a0a" stroke-width="1.5" />
+      <polygon v-else-if="n.kind === 'config'" :points="HEX"
         :fill="nodeColor(n)" stroke="#0a0a0a" stroke-width="1.5" />
       <template v-else>
         <circle r="12" fill="none" :stroke="nodeColor(n)" stroke-opacity="0.4" />

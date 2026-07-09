@@ -5,6 +5,7 @@ const { data: intel } = await useJson<Intel>('intel', EMPTY_INTEL)
 
 const kpis = computed(() => [
   { label: 'Reports', value: intel.value.reports || 0, icon: 'i-lucide-file-text' },
+  { label: 'Operator clusters', value: (intel.value.operator_clusters || []).length, icon: 'i-lucide-users', tone: '#f43f5e' },
   { label: 'Shared IOCs', value: (intel.value.shared_iocs || []).length, icon: 'i-lucide-share-2', tone: '#ef4444' },
   { label: 'Imphash clusters', value: (intel.value.imphash_clusters || []).length, icon: 'i-lucide-boxes' },
   { label: 'Families', value: (intel.value.families || []).length, icon: 'i-lucide-bug' },
@@ -17,7 +18,7 @@ const hasHeat = computed(() => Object.keys(intel.value.attack_heatmap || {}).len
     <PageHeader eyebrow="malscope · correlate" title="Threat Intel"
       subtitle="Cross-report correlation — shared infrastructure, code-similar clusters, and ATT&CK coverage. All indicators defanged." />
 
-    <div class="grid grid-cols-2 gap-3 md:grid-cols-4">
+    <div class="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-5">
       <div v-for="k in kpis" :key="k.label" class="rounded-xl border border-default/60 bg-elevated/40 p-4">
         <div class="flex items-center justify-between">
           <span class="text-xs uppercase tracking-wide text-muted">{{ k.label }}</span>
@@ -26,6 +27,33 @@ const hasHeat = computed(() => Object.keys(intel.value.attack_heatmap || {}).len
         <div class="mt-1 text-3xl font-semibold" :style="k.tone ? { color: k.tone } : {}">{{ k.value }}</div>
       </div>
     </div>
+
+    <section v-if="(intel.operator_clusters || []).length">
+      <h2 class="mb-3 flex items-center gap-2 text-sm font-semibold text-muted">
+        <UIcon name="i-lucide-users" class="size-4" /> Operator clusters
+        <span class="text-[11px] font-normal text-dimmed">(samples sharing extracted config — likely the same actor / campaign)</span>
+      </h2>
+      <div class="grid gap-3 md:grid-cols-2">
+        <div v-for="(oc, i) in intel.operator_clusters" :key="i"
+          class="rounded-xl border border-primary/30 bg-primary/5 p-4">
+          <div class="mb-2 flex items-center gap-1.5 text-sm font-semibold text-primary">
+            <UIcon name="i-lucide-git-fork" class="size-4" /> {{ oc.count }} linked samples
+          </div>
+          <div class="mb-3 flex flex-wrap gap-1">
+            <NuxtLink v-for="rid in oc.reports" :key="rid" :to="`/reports/${rid}`"
+              class="rounded bg-primary/15 px-1.5 py-0.5 font-mono text-[11px] text-primary hover:bg-primary/25">
+              {{ rid.slice(0, 8) }}
+            </NuxtLink>
+          </div>
+          <div class="space-y-1">
+            <div v-for="(s, j) in oc.signals" :key="j" class="flex items-start gap-2 text-xs">
+              <span class="w-16 shrink-0 text-[10px] uppercase tracking-wide text-dimmed">{{ s.field }}</span>
+              <span class="break-all font-mono text-muted">{{ s.value }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <section v-if="hasHeat" class="rounded-xl border border-default/60 bg-elevated/20 p-5">
       <h2 class="mb-3 flex items-center gap-2 text-sm font-semibold text-muted">

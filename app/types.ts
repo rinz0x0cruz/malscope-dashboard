@@ -18,6 +18,15 @@ export interface Report {
   report: string
   network_iocs: string[]
   ioc_counts: Record<string, number>
+  config?: MalwareConfig
+}
+
+export interface MalwareConfig {
+  c2: string[]
+  keys: string[]
+  campaign: string[]
+  mutex: string[]
+  version: string[]
 }
 
 export interface TechniqueResolved { id: string; name: string; tactic: string; count: number }
@@ -35,6 +44,9 @@ export interface Manifest {
 export interface SharedIoc { bucket: string; value: string; reports: string[]; count: number }
 export interface ImphashCluster { imphash: string; reports: string[]; count: number }
 export interface FamilyGroup { family: string; reports: string[]; count: number }
+export interface ConfigLink { field: string; value: string; reports: string[]; count: number }
+export interface OperatorSignal { field: string; value: string }
+export interface OperatorCluster { reports: string[]; signals: OperatorSignal[]; count: number }
 export interface HeatTactic { count: number; techniques: { id: string; name: string; count: number }[] }
 
 export interface Intel {
@@ -43,6 +55,8 @@ export interface Intel {
   shared_iocs: SharedIoc[]
   imphash_clusters: ImphashCluster[]
   families: FamilyGroup[]
+  config_links: ConfigLink[]
+  operator_clusters: OperatorCluster[]
   attack_heatmap: Record<string, HeatTactic>
   technique_totals: TechniqueResolved[]
 }
@@ -53,7 +67,7 @@ export const EMPTY_MANIFEST: Manifest = {
 }
 export const EMPTY_INTEL: Intel = {
   generated: '', reports: 0, shared_iocs: [], imphash_clusters: [],
-  families: [], attack_heatmap: {}, technique_totals: [],
+  families: [], config_links: [], operator_clusters: [], attack_heatmap: {}, technique_totals: [],
 }
 
 export const VERDICT_BADGE: Record<string, 'error' | 'warning' | 'success' | 'neutral'> = {

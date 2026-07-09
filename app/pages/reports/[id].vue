@@ -31,6 +31,18 @@ const meta = computed(() => {
     { label: 'TLP', value: r.tlp || '—' },
   ]
 })
+
+const configGroups = computed(() => {
+  const c = report.value?.config
+  if (!c) return []
+  return [
+    { label: 'Campaign / botnet', icon: 'i-lucide-flag', values: c.campaign },
+    { label: 'Encryption keys', icon: 'i-lucide-key-round', values: c.keys },
+    { label: 'C2 (declared)', icon: 'i-lucide-satellite-dish', values: c.c2 },
+    { label: 'Mutex', icon: 'i-lucide-lock', values: c.mutex },
+    { label: 'Version', icon: 'i-lucide-tag', values: c.version },
+  ].filter(g => (g.values || []).length)
+})
 </script>
 
 <template>
@@ -67,6 +79,24 @@ const meta = computed(() => {
     <div v-if="(report.tags || []).length" class="flex flex-wrap gap-1.5">
       <UBadge v-for="t in report.tags" :key="t" color="neutral" variant="soft" size="sm">{{ t }}</UBadge>
     </div>
+
+    <section v-if="configGroups.length">
+      <h2 class="mb-2 flex items-center gap-2 text-sm font-semibold text-muted">
+        <UIcon name="i-lucide-key-round" class="size-4" /> Malware config
+        <span class="text-[11px] font-normal text-dimmed">(extracted · operator intel)</span>
+      </h2>
+      <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <div v-for="grp in configGroups" :key="grp.label"
+          class="rounded-lg border border-primary/25 bg-primary/5 p-3">
+          <div class="mb-1.5 flex items-center gap-1.5 text-[11px] uppercase tracking-wide text-primary/80">
+            <UIcon :name="grp.icon" class="size-3.5" /> {{ grp.label }}
+          </div>
+          <ul class="space-y-1">
+            <li v-for="v in grp.values" :key="v" class="break-all font-mono text-xs text-muted">{{ v }}</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
     <section v-if="(report.techniques || []).length">
       <h2 class="mb-2 flex items-center gap-2 text-sm font-semibold text-muted">
