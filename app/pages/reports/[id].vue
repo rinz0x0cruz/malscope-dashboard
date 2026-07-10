@@ -22,7 +22,7 @@ function fmtSize(n: number) {
 const meta = computed(() => {
   const r = report.value
   if (!r) return []
-  return [
+  const rows = [
     { label: 'Family', value: r.family || '—' },
     { label: 'Classification', value: r.classification || '—' },
     { label: 'File type', value: r.filetype || '—' },
@@ -30,6 +30,9 @@ const meta = computed(() => {
     { label: 'First seen', value: (r.first_seen || '').slice(0, 10) || '—' },
     { label: 'TLP', value: r.tlp || '—' },
   ]
+  if (r.actor) rows.splice(2, 0, { label: 'Actor', value: r.actor })
+  if (r.collection) rows.push({ label: 'Collection', value: r.collection })
+  return rows
 })
 
 const configGroups = computed(() => {

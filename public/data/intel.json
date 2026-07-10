@@ -163,6 +163,8 @@
   ],
   "operator_clusters": [
     {
+      "id": "tesla-0725",
+      "label": "TESLA-0725",
       "reports": [
         "a1b2c3d4e5f6",
         "b2c3d4e5f607",
@@ -189,6 +191,20 @@
           "field": "version",
           "value": "4.9.2"
         }
+      ],
+      "count": 3,
+      "actors": [
+        "TA-Voltage"
+      ]
+    }
+  ],
+  "actors": [
+    {
+      "actor": "TA-Voltage",
+      "reports": [
+        "a1b2c3d4e5f6",
+        "b2c3d4e5f607",
+        "e5f607182a3b"
       ],
       "count": 3
     }

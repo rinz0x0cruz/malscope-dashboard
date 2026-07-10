@@ -5,6 +5,8 @@
     {
       "id": "e5f607182a3b",
       "sha256": "e5f607182a3b0718293a4b5c6d7e8f90112233445566778899aabbccddeeff05",
+      "actor": "TA-Voltage",
+      "collection": "stealers",
       "filename": "invoice_march.exe",
       "filetype": "pe",
       "size": 187904,
@@ -32,7 +34,7 @@
         "ET MALWARE AgentTesla CnC Checkin"
       ],
       "tlp": "AMBER",
-      "report": "2026/e5f607182a3b-march.md",
+      "report": "stealers/2026/e5f607182a3b-march.md",
       "network_iocs": [
         "hxxp://c2[.]agent-tesla[.]top/gate[.]php",
         "185[.]220[.]101[.]45",
@@ -91,6 +93,8 @@
     {
       "id": "a1b2c3d4e5f6",
       "sha256": "a1b2c3d4e5f60718293a4b5c6d7e8f90112233445566778899aabbccddeeff00",
+      "actor": "TA-Voltage",
+      "collection": "stealers",
       "filename": "invoice_2026.exe",
       "filetype": "pe",
       "size": 184320,
@@ -119,7 +123,7 @@
         "ET MALWARE AgentTesla CnC Checkin"
       ],
       "tlp": "AMBER",
-      "report": "2026/a1b2c3d4e5f6-invoice.md",
+      "report": "stealers/2026/a1b2c3d4e5f6-invoice.md",
       "network_iocs": [
         "hxxp://c2[.]agent-tesla[.]top/gate[.]php",
         "185[.]220[.]101[.]45",
@@ -178,6 +182,8 @@
     {
       "id": "b2c3d4e5f607",
       "sha256": "b2c3d4e5f60718293a4b5c6d7e8f90112233445566778899aabbccddeeff0011",
+      "actor": "TA-Voltage",
+      "collection": "stealers",
       "filename": "order_confirmation.exe",
       "filetype": "pe",
       "size": 189440,
@@ -204,7 +210,7 @@
         "ET MALWARE AgentTesla CnC Checkin"
       ],
       "tlp": "AMBER",
-      "report": "2026/b2c3d4e5f607-order.md",
+      "report": "stealers/2026/b2c3d4e5f607-order.md",
       "network_iocs": [
         "hxxp://c2[.]agent-tesla[.]top/gate[.]php",
         "45[.]83[.]13[.]4"
@@ -250,6 +256,8 @@
     {
       "id": "c3d4e5f60718",
       "sha256": "c3d4e5f60718293a4b5c6d7e8f90112233445566778899aabbccddeeff001122",
+      "actor": "",
+      "collection": "loaders",
       "filename": "setup_x86.scr",
       "filetype": "pe",
       "size": 421888,
@@ -277,7 +285,7 @@
         "ET MALWARE FormBook CnC"
       ],
       "tlp": "AMBER",
-      "report": "2026/c3d4e5f60718-setup.md",
+      "report": "loaders/2026/c3d4e5f60718-setup.md",
       "network_iocs": [
         "hxxps://formbook-panel[.]xyz/fb/",
         "91[.]92[.]240[.]12"
@@ -321,6 +329,8 @@
     {
       "id": "d4e5f6071829",
       "sha256": "d4e5f60718293a4b5c6d7e8f90112233445566778899aabbccddeeff00112233",
+      "actor": "",
+      "collection": "maldocs",
       "filename": "resume_update.doc",
       "filetype": "ole",
       "size": 96256,
@@ -343,7 +353,7 @@
       ],
       "signatures": [],
       "tlp": "GREEN",
-      "report": "2026/d4e5f6071829-resume.md",
+      "report": "maldocs/2026/d4e5f6071829-resume.md",
       "network_iocs": [
         "hxxp://staging[.]doc-download[.]cc/p[.]php"
       ],
@@ -437,5 +447,10 @@
   "verdicts": {
     "malicious": 4,
     "suspicious": 1
+  },
+  "collections": {
+    "stealers": 3,
+    "loaders": 1,
+    "maldocs": 1
   }
 }

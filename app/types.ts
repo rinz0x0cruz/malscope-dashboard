@@ -7,6 +7,8 @@ export interface Report {
   size: number
   family: string
   classification: string
+  actor?: string
+  collection?: string
   verdict: string
   severity: string
   first_seen: string
@@ -50,6 +52,7 @@ export interface Manifest {
   techniques_resolved: TechniqueResolved[]
   families: Record<string, number>
   verdicts: Record<string, number>
+  collections: Record<string, number>
 }
 
 export interface SharedIoc {
@@ -59,9 +62,10 @@ export interface SharedIoc {
 export interface ImphashCluster { imphash: string; reports: string[]; count: number }
 export interface TlshCluster { reports: string[]; count: number; max_distance: number }
 export interface FamilyGroup { family: string; reports: string[]; count: number }
+export interface ActorGroup { actor: string; reports: string[]; count: number }
 export interface ConfigLink { field: string; value: string; reports: string[]; count: number }
 export interface OperatorSignal { field: string; value: string }
-export interface OperatorCluster { reports: string[]; signals: OperatorSignal[]; count: number }
+export interface OperatorCluster { reports: string[]; signals: OperatorSignal[]; count: number; actors?: string[] }
 export interface HeatTactic { count: number; techniques: { id: string; name: string; count: number }[] }
 
 export interface Intel {
@@ -73,17 +77,18 @@ export interface Intel {
   families: FamilyGroup[]
   config_links: ConfigLink[]
   operator_clusters: OperatorCluster[]
+  actors: ActorGroup[]
   attack_heatmap: Record<string, HeatTactic>
   technique_totals: TechniqueResolved[]
 }
 
 export const EMPTY_MANIFEST: Manifest = {
   generated: '', count: 0, reports: [], techniques: {},
-  techniques_resolved: [], families: {}, verdicts: {},
+  techniques_resolved: [], families: {}, verdicts: {}, collections: {},
 }
 export const EMPTY_INTEL: Intel = {
   generated: '', reports: 0, shared_iocs: [], imphash_clusters: [], tlsh_clusters: [],
-  families: [], config_links: [], operator_clusters: [], attack_heatmap: {}, technique_totals: [],
+  families: [], config_links: [], operator_clusters: [], actors: [], attack_heatmap: {}, technique_totals: [],
 }
 
 export interface Detection {

@@ -6,6 +6,7 @@ const { data: intel } = await useJson<Intel>('intel', EMPTY_INTEL)
 const kpis = computed(() => [
   { label: 'Reports', value: intel.value.reports || 0, icon: 'i-lucide-file-text' },
   { label: 'Operator clusters', value: (intel.value.operator_clusters || []).length, icon: 'i-lucide-users', tone: '#f43f5e' },
+  { label: 'Actors', value: (intel.value.actors || []).length, icon: 'i-lucide-crosshair', tone: '#f59e0b' },
   { label: 'Shared IOCs', value: (intel.value.shared_iocs || []).length, icon: 'i-lucide-share-2', tone: '#ef4444' },
   { label: 'Imphash clusters', value: (intel.value.imphash_clusters || []).length, icon: 'i-lucide-boxes' },
   { label: 'Families', value: (intel.value.families || []).length, icon: 'i-lucide-bug' },
@@ -18,7 +19,7 @@ const hasHeat = computed(() => Object.keys(intel.value.attack_heatmap || {}).len
     <PageHeader eyebrow="malscope · correlate" title="Threat Intel"
       subtitle="Cross-report correlation — shared infrastructure, code-similar clusters, and ATT&CK coverage. All indicators defanged." />
 
-    <div class="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-5">
+    <div class="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6">
       <div v-for="k in kpis" :key="k.label" class="rounded-xl border border-default/60 bg-elevated/40 p-4">
         <div class="flex items-center justify-between">
           <span class="text-xs uppercase tracking-wide text-muted">{{ k.label }}</span>
@@ -36,8 +37,12 @@ const hasHeat = computed(() => Object.keys(intel.value.attack_heatmap || {}).len
       <div class="grid gap-3 md:grid-cols-2">
         <div v-for="(oc, i) in intel.operator_clusters" :key="i"
           class="rounded-xl border border-primary/30 bg-primary/5 p-4">
-          <div class="mb-2 flex items-center gap-1.5 text-sm font-semibold text-primary">
+          <div class="mb-2 flex flex-wrap items-center gap-1.5 text-sm font-semibold text-primary">
             <UIcon name="i-lucide-git-fork" class="size-4" /> {{ oc.count }} linked samples
+            <span v-if="oc.actors?.length"
+              class="inline-flex items-center gap-1 rounded bg-warning/15 px-1.5 py-0.5 text-[11px] text-warning">
+              <UIcon name="i-lucide-crosshair" class="size-3" /> {{ oc.actors.join(' / ') }}
+            </span>
           </div>
           <div class="mb-3 flex flex-wrap gap-1">
             <NuxtLink v-for="rid in oc.reports" :key="rid" :to="`/reports/${rid}`"
@@ -50,6 +55,30 @@ const hasHeat = computed(() => Object.keys(intel.value.attack_heatmap || {}).len
               <span class="w-16 shrink-0 text-[10px] uppercase tracking-wide text-dimmed">{{ s.field }}</span>
               <span class="break-all font-mono text-muted">{{ s.value }}</span>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section v-if="(intel.actors || []).length">
+      <h2 class="mb-3 flex items-center gap-2 text-sm font-semibold text-muted">
+        <UIcon name="i-lucide-crosshair" class="size-4" /> Attributed actors
+        <span class="text-[11px] font-normal text-dimmed">(analyst-set — never auto-assigned)</span>
+      </h2>
+      <div class="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+        <div v-for="a in intel.actors" :key="a.actor"
+          class="rounded-xl border border-warning/30 bg-warning/5 p-4">
+          <div class="mb-2 flex items-center justify-between">
+            <span class="flex items-center gap-1.5 font-semibold text-warning">
+              <UIcon name="i-lucide-crosshair" class="size-4" /> {{ a.actor }}
+            </span>
+            <UBadge color="warning" variant="subtle" size="sm">{{ a.count }}</UBadge>
+          </div>
+          <div class="flex flex-wrap gap-1">
+            <NuxtLink v-for="rid in a.reports" :key="rid" :to="`/reports/${rid}`"
+              class="rounded bg-warning/15 px-1.5 py-0.5 font-mono text-[11px] text-warning hover:bg-warning/25">
+              {{ rid.slice(0, 8) }}
+            </NuxtLink>
           </div>
         </div>
       </div>

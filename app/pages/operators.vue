@@ -48,6 +48,7 @@ const operators = computed(() => (intel.value.operator_clusters || []).map((oc, 
     signals: oc.signals,
     techniques: Array.from(new Set(samples.flatMap(s => s.techniques || []))),
     fuzzy: oc.reports.some(id => tlshLinked.value.has(id)),
+    actors: oc.actors || [],
     yara: dets.length,
     sigma: dets.reduce((n, x) => n + (x.sigma_count || 0), 0),
   }
@@ -69,6 +70,10 @@ const fmtDate = (s: string) => (s || '').slice(0, 10) || '\u2014'
             <UIcon name="i-lucide-users" class="size-5 text-primary" />
             <h2 class="break-all font-mono text-lg font-semibold text-primary">{{ op.label }}</h2>
             <UBadge color="primary" variant="subtle" size="sm">{{ op.count }} samples</UBadge>
+            <span v-if="op.actors.length"
+              class="inline-flex items-center gap-1 rounded bg-warning/15 px-1.5 py-0.5 text-[11px] font-medium text-warning">
+              <UIcon name="i-lucide-crosshair" class="size-3" /> attributed: {{ op.actors.join(' / ') }}
+            </span>
             <span v-if="op.fuzzy" class="rounded bg-sky-500/15 px-1.5 py-0.5 text-[11px] text-sky-400">
               TLSH-linked variants
             </span>

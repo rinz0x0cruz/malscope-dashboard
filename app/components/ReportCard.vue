@@ -21,6 +21,9 @@ const iocTotal = computed(() =>
     <div class="mt-3 flex flex-wrap items-center gap-1.5">
       <UBadge v-if="report.family" color="primary" variant="soft" size="sm">{{ report.family }}</UBadge>
       <UBadge v-if="report.classification" color="neutral" variant="soft" size="sm">{{ report.classification }}</UBadge>
+      <UBadge v-if="report.actor" color="warning" variant="subtle" size="sm">
+        <UIcon name="i-lucide-crosshair" class="size-3" /> {{ report.actor }}
+      </UBadge>
       <span v-if="report.severity" class="rounded px-1.5 py-0.5 text-[11px] font-medium"
         :style="{ color: SEVERITY_COLOR[report.severity] || '#a1a1aa',
                   backgroundColor: (SEVERITY_COLOR[report.severity] || '#a1a1aa') + '1a' }">
@@ -34,6 +37,9 @@ const iocTotal = computed(() =>
       </span>
       <span class="inline-flex items-center gap-1">
         <UIcon name="i-lucide-network" class="size-3.5" />{{ iocTotal }} IOC
+      </span>
+      <span v-if="report.collection" class="inline-flex items-center gap-1">
+        <UIcon name="i-lucide-folder" class="size-3.5" />{{ report.collection }}
       </span>
       <span class="ml-auto font-mono">{{ (report.first_seen || '').slice(0, 10) }}</span>
     </div>
