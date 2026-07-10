@@ -4,6 +4,7 @@ const links = [
   { label: 'Reports', to: '/reports', icon: 'i-lucide-file-text' },
   { label: 'Intel', to: '/intel', icon: 'i-lucide-share-2' },
   { label: 'Graph', to: '/graph', icon: 'i-lucide-waypoints' },
+  { label: 'Operators', to: '/operators', icon: 'i-lucide-users' },
   { label: 'ATT&CK', to: '/attack', icon: 'i-lucide-grid-3x3' },
   { label: 'Detections', to: '/detections', icon: 'i-lucide-shield-check' },
   { label: 'Search', to: '/search', icon: 'i-lucide-search' },
@@ -36,7 +37,8 @@ const route = useRoute()
       </main>
 
       <footer class="mx-auto max-w-7xl px-4 pb-10 pt-4 text-xs text-dimmed">
-        malscope · offline malware-analysis dashboard · all indicators defanged
+        malscope · offline malware-analysis dashboard · all indicators defanged ·
+        <NuxtLink to="/about" class="transition-colors hover:text-primary">how it works</NuxtLink>
       </footer>
     </div>
   </UApp>
